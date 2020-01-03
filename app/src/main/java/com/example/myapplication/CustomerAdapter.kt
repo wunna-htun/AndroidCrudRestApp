@@ -1,13 +1,17 @@
 package com.example.myapplication
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.user_list.view.*
 
-class CustomerAdapter (var customerItemList:List<Customer>, val clickListener: (Customer) ->Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CustomerAdapter (var customerItemList:List<Customer>, val clickListener: (Customer) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
 
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.user_list,parent,false)
@@ -26,6 +30,7 @@ class CustomerAdapter (var customerItemList:List<Customer>, val clickListener: (
         fun bind(customer :Customer, clickListener: (Customer) -> Unit){
             itemView.tv_user_item_name.text=customer.name
             itemView.tv_user_id.text=customer.id.toString()
+            itemView.tv_user_email.text=customer.email
             itemView.setOnClickListener{clickListener(customer)}
         }
 

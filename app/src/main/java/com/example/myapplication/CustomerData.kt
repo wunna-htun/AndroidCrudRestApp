@@ -9,4 +9,8 @@ data class Customer (
     @Json(name = "id")
     var id: String,
     @Json(name = "name")
-    var name: String)
+    var name: String,
+    @Json(name="email")
+    var email: String
+
+)

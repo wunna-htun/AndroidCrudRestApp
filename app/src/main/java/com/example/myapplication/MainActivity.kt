@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Log.d("Create","Create")
+
         rv_parts.layoutManager  = LinearLayoutManager(this)
 
         adapter = CustomerAdapter(listOf(),{ customerItem:Customer-> UserItemClicked(customerItem)})
@@ -36,6 +38,17 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("Resume","resume")
+        loadPartsAndUpdateList()
+
+    }
+
+
+
 
 
     private fun addPart(partItem: Customer) {
@@ -99,8 +112,10 @@ class MainActivity : AppCompatActivity() {
         // Launch second activity, pass part ID as string parameter
         val showDetailActivityIntent = Intent(this, UserDetailsActivity::class.java)
         //showDetailActivityIntent.putExtra(Intent.EXTRA_TEXT, partItem.id.toString())
-        showDetailActivityIntent.putExtra("ItemId", customerItem.name)
-        showDetailActivityIntent.putExtra("ItemName", customerItem.id)
+        showDetailActivityIntent.putExtra("ItemId", customerItem.id)
+        showDetailActivityIntent.putExtra("ItemName", customerItem.name)
         startActivity(showDetailActivityIntent)
     }
+
+
 }
